@@ -34,4 +34,6 @@ import { prepareTactDeployment } from "@tact-lang/deployer";
     console.log(prepare);
     console.log();
     console.log("============================================================================================");
+
+    
 })();

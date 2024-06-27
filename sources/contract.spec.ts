@@ -8,9 +8,13 @@ describe("contract", () => {
         let system = await ContractSystem.create();
         let owner = system.treasure("owner");
         let nonOwner = system.treasure("non-owner");
+
         let contract = system.open(await SampleTactContract.fromInit(owner.address));
+
         system.name(contract.address, "main");
+
         let track = system.track(contract);
+        
         await contract.send(owner, { value: toNano(1) }, { $$type: "Deploy", queryId: 0n });
         await system.run();
         expect(track.collect()).toMatchInlineSnapshot(`
