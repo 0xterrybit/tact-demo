@@ -21,4 +21,6 @@ import { did } from "./output/rns_did";
     let contract = await did.fromAddress(contract_address);
     let contract_open = await client.open(contract);
     console.log("Counter Value: " + (await contract_open.getCounter()));
+
+    
 })();

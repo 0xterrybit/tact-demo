@@ -53,6 +53,95 @@ exports[`did contract should deploy correctly 1`] = `
 ]
 `;
 
+exports[`did contract should handle Add message correctly 1`] = `
+[
+  {
+    "$seq": 0,
+    "events": [
+      {
+        "$type": "deploy",
+      },
+      {
+        "$type": "received",
+        "message": {
+          "body": {
+            "type": "known",
+            "value": {
+              "$$type": "Add",
+              "amount": 100,
+            },
+          },
+          "bounce": true,
+          "from": "@treasure(owner)",
+          "to": "@main",
+          "type": "internal",
+          "value": "1",
+        },
+      },
+      {
+        "$type": "processed",
+        "gasUsed": 4593n,
+      },
+    ],
+  },
+]
+`;
+
+exports[`did contract should handle FactoryDeploy message correctly 1`] = `
+[
+  {
+    "$seq": 0,
+    "events": [
+      {
+        "$type": "deploy",
+      },
+      {
+        "$type": "received",
+        "message": {
+          "body": {
+            "type": "known",
+            "value": {
+              "$$type": "Deploy",
+              "queryId": 1n,
+            },
+          },
+          "bounce": true,
+          "from": "@treasure(owner)",
+          "to": "@main",
+          "type": "internal",
+          "value": "1",
+        },
+      },
+      {
+        "$type": "processed",
+        "gasUsed": 8040n,
+      },
+      {
+        "$type": "sent",
+        "messages": [
+          {
+            "body": {
+              "type": "known",
+              "value": {
+                "$$type": "DeployOk",
+                "queryId": 1n,
+              },
+            },
+            "bounce": false,
+            "from": "@main",
+            "to": "@treasure(owner)",
+            "type": "internal",
+            "value": "0.990764",
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`did contract should handle invalid message type 1`] = `[]`;
+
 exports[`did contract should increment counter by owner 1`] = `
 [
   {

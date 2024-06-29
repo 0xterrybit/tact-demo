@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "tact --config ./tact.config.json",
-    "test": "jest",
+    "build": "tact --config ./tact.config.json && node ./src/postprocess.js",
+    "test": "jest -u",
     "deploy": "ts-node ./src/contract.deploy.ts",
     "read": "ts-node ./src/contract.read.ts"
   },
