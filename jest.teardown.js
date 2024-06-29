@@ -3,6 +3,6 @@ const path = require('path');
 
 module.exports = async () => {
     coverage.completeCoverage([
-        path.resolve(__dirname, 'sources', 'output', '*.boc')
+        path.resolve(__dirname, 'src', 'output', '*.boc')
     ]);
 };

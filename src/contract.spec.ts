@@ -1,22 +1,31 @@
 import { toNano } from "@ton/core";
 import { ContractSystem } from "@tact-lang/emulator";
-import { SampleTactContract } from "./output/sample_SampleTactContract";
+import { did } from "./output/rns_did";
 
 describe("contract", () => {
     it("should deploy correctly", async () => {
+
         // Create ContractSystem and deploy contract
         let system = await ContractSystem.create();
+
         let owner = system.treasure("owner");
         let nonOwner = system.treasure("non-owner");
 
-        let contract = system.open(await SampleTactContract.fromInit(owner.address));
+        let ins = await did.fromInit(owner.address);
+        let contract = system.open(ins);
 
         system.name(contract.address, "main");
 
         let track = system.track(contract);
-        
-        await contract.send(owner, { value: toNano(1) }, { $$type: "Deploy", queryId: 0n });
+
+        await contract.send(
+          owner, 
+          { value: toNano(1) }, 
+          { $$type: "Deploy", queryId: 0n }
+        );
+
         await system.run();
+
         expect(track.collect()).toMatchInlineSnapshot(`
             [
               {
@@ -76,6 +85,7 @@ describe("contract", () => {
         // Increment counter
         await contract.send(owner, { value: toNano(1) }, "increment");
         await system.run();
+
         expect(track.collect()).toMatchInlineSnapshot(`
             [
               {
@@ -126,6 +136,7 @@ describe("contract", () => {
         // Non-owner
         await contract.send(nonOwner, { value: toNano(1) }, "increment");
         await system.run();
+
         expect(track.collect()).toMatchInlineSnapshot(`
             [
               {
@@ -168,5 +179,6 @@ describe("contract", () => {
               },
             ]
         `);
+
     });
 });

@@ -1,14 +1,4 @@
 node_modules
-sources/output/sample_SampleTactContract.abi
-sources/output/sample_SampleTactContract.code.boc
-sources/output/sample_SampleTactContract.code.boc.html
-sources/output/sample_SampleTactContract.code.fc
-sources/output/sample_SampleTactContract.code.fif
-sources/output/sample_SampleTactContract.code.rev.fif
-sources/output/sample_SampleTactContract.constants.fc
-sources/output/sample_SampleTactContract.headers.fc
-sources/output/sample_SampleTactContract.md
-sources/output/sample_SampleTactContract.pkg
-sources/output/sample_SampleTactContract.stdlib.fc
-sources/output/sample_SampleTactContract.storage.fc
-sources/output/sample_SampleTactContract.ts
+src/output/**
+
+coverage

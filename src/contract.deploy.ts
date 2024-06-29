@@ -1,15 +1,16 @@
 import * as fs from "fs";
 import * as path from "path";
 import { Address, contractAddress } from "@ton/core";
-import { SampleTactContract } from "./output/sample_SampleTactContract";
+import { did } from "./output/rns_did";
 import { prepareTactDeployment } from "@tact-lang/deployer";
 
 (async () => {
+
     // Parameters
     let testnet = true;
-    let packageName = "sample_SampleTactContract.pkg";
+    let packageName = "rns_did.pkg";
     let owner = Address.parse("kQBM7QssP28PhrctDOyd47_zpFfDiQvv5V9iXizNopb1d2LB");
-    let init = await SampleTactContract.init(owner);
+    let init = await did.init(owner);
 
     // Load required data
     let address = contractAddress(0, init);
@@ -34,6 +35,4 @@ import { prepareTactDeployment } from "@tact-lang/deployer";
     console.log(prepare);
     console.log();
     console.log("============================================================================================");
-
-    
 })();

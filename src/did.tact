@@ -4,7 +4,7 @@ message Add {
     amount: Int as uint32;
 }
 
-contract SampleTactContract with Deployable {
+contract did with Deployable {
 
     owner: Address;
     counter: Int as uint32;

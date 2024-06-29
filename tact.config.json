@@ -1,10 +1,9 @@
 {
-    "projects": [{
-        "name": "sample",
-        "path": "./sources/contract.tact",
-        "output": "./sources/output",
-        "options":{
-            
+    "projects": [
+        {
+            "name": "rns",
+            "path": "./src/did.tact",
+            "output": "./src/output"
         }
-    }]
+    ]
 }

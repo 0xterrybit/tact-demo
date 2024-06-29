@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`did contract should deploy correctly 1`] = `
+[
+  {
+    "$seq": 0,
+    "events": [
+      {
+        "$type": "deploy",
+      },
+      {
+        "$type": "received",
+        "message": {
+          "body": {
+            "type": "known",
+            "value": {
+              "$$type": "Deploy",
+              "queryId": 0n,
+            },
+          },
+          "bounce": true,
+          "from": "@treasure(owner)",
+          "to": "@main",
+          "type": "internal",
+          "value": "1",
+        },
+      },
+      {
+        "$type": "processed",
+        "gasUsed": 8040n,
+      },
+      {
+        "$type": "sent",
+        "messages": [
+          {
+            "body": {
+              "type": "known",
+              "value": {
+                "$$type": "DeployOk",
+                "queryId": 0n,
+              },
+            },
+            "bounce": false,
+            "from": "@main",
+            "to": "@treasure(owner)",
+            "type": "internal",
+            "value": "0.990764",
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`did contract should increment counter by owner 1`] = `
+[
+  {
+    "$seq": 0,
+    "events": [
+      {
+        "$type": "deploy",
+      },
+      {
+        "$type": "received",
+        "message": {
+          "body": {
+            "text": "increment",
+            "type": "text",
+          },
+          "bounce": true,
+          "from": "@treasure(owner)",
+          "to": "@main",
+          "type": "internal",
+          "value": "1",
+        },
+      },
+      {
+        "$type": "processed",
+        "gasUsed": 8411n,
+      },
+      {
+        "$type": "sent",
+        "messages": [
+          {
+            "body": {
+              "text": "incremented",
+              "type": "text",
+            },
+            "bounce": true,
+            "from": "@main",
+            "to": "@treasure(owner)",
+            "type": "internal",
+            "value": "0.990369",
+          },
+        ],
+      },
+    ],
+  },
+]
+`;
+
+exports[`did contract should not increment counter by non-owner 1`] = `
+[
+  {
+    "$seq": 0,
+    "events": [
+      {
+        "$type": "deploy",
+      },
+      {
+        "$type": "received",
+        "message": {
+          "body": {
+            "text": "increment",
+            "type": "text",
+          },
+          "bounce": true,
+          "from": "@treasure(non-owner)",
+          "to": "@main",
+          "type": "internal",
+          "value": "1",
+        },
+      },
+      {
+        "$type": "failed",
+        "errorCode": 4429,
+        "errorMessage": "Invalid sender",
+      },
+      {
+        "$type": "sent-bounced",
+        "message": {
+          "body": {
+            "cell": "x{FFFFFFFF00000000696E6372656D656E74}",
+            "type": "cell",
+          },
+          "bounce": false,
+          "from": "@main",
+          "to": "@treasure(non-owner)",
+          "type": "internal",
+          "value": "0.994877",
+        },
+      },
+    ],
+  },
+]
+`;
